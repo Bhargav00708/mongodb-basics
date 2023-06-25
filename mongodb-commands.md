@@ -81,6 +81,7 @@ db.posts.insertMany([
 
 ```js
 db.posts.find()
+db.posts.findOne()
 ```
 
 ### Get All Rows Formatted
