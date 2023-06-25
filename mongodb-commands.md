@@ -39,7 +39,7 @@ show collections
 ### Insert Row
 
 ```js
-db.posts.insert({
+db.posts.insertOne({
   title: 'Post One',
   body: 'Body of post one',
   category: 'News',
