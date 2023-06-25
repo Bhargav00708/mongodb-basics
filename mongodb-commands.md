@@ -101,6 +101,7 @@ db.posts.find({ category: 'News' })
 ```js
 # asc
 db.posts.find().sort({ title: 1 }).pretty()
+in Char it will sort according to it
 # desc
 db.posts.find().sort({ title: -1 }).pretty()
 ```
@@ -122,6 +123,7 @@ db.posts.find().limit(2).pretty()
 
 ```js
 db.posts.find().limit(2).sort({ title: 1 }).pretty()
+We can Also chain in any order
 ```
 
 ### Foreach
@@ -145,11 +147,22 @@ db.posts.find({ title: 'Post One' }, {
   title: 1,
   author: 1
 })
+In the MongoDB query language, the second argument of the `find()` method is used to specify which fields of the matched documents should be included or excluded from the result set. 
+
+If you pass a field name with a value of `1`, it means that the field should be included in the result set. In your example, the query will return all documents where the `title` field is 'Post One', and it will include the `title` and `author` fields in the result set. 
+
+On the other hand, if you pass a field name with a value of `0`, it means that the field should be excluded from the result set. In other words, it will not be returned in the query result. 
+
+For example, if we modify the query to `db.posts.find({ title: 'Post One' }, { _id: 0, content: 0 })`, it will return all documents where the `title` field is 'Post One', but it will exclude the `_id` and `content` fields from the result set. 
+
+If you pass any value other than `0` or `1`, MongoDB will treat it as a `1` and include that field in the result set. This is called "projection" in MongoDB and it allows you to control the shape of the data returned from the query.
 ```
 
 ### Update Row
 
 ```js
+Now it is generally we should use updateOne and updateMany for better control and clarity
+
 db.posts.update({ title: 'Post Two' },
 {
   title: 'Post Two',
@@ -198,6 +211,7 @@ db.posts.update({ title: 'Post Two' },
 ### Delete Row
 
 ```js
+We can also use deleteOne and deleteMany for better control and clarity
 db.posts.remove({ title: 'Post Four' })
 ```
 
