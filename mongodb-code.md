@@ -211,6 +211,22 @@ How do I remove words completely from all the documents in this collection?
 db.example.update({}, {$unset: {words: 1}}, false, true);
 ```
 
+In the MongoDB update command you provided, the "false" and "true" values correspond to the options for the `multi` and `upsert` parameters, respectively. Here's what they mean:
+
+```javascript
+db.example.update({}, {$unset: {words: 1}}, false, true);
+```
+
+- The first parameter `{}` is the query filter, which in this case is an empty object `{}`. This means the update operation will be applied to all documents in the collection.
+
+- The second parameter `{$unset: {words: 1}}` is the update operation itself. In this case, it uses the `$unset` operator to remove the "words" field from the document.
+
+- The third parameter `false` is the `multi` option. When set to `false`, it specifies that only the first document matching the query filter will be updated. In this case, since the query filter is an empty object `{}`, all documents in the collection will be matched, and only the first document encountered will be updated.
+
+- The fourth parameter `true` is the `upsert` option. When set to `true`, it indicates that if no documents match the query filter, a new document will be inserted based on the update operation. In this case, since the query filter is an empty object `{}`, it will not create a new document because all existing documents in the collection will be matched.
+
+So, in summary, the command you provided will unset the "words" field from the first document encountered in the "example" collection, and it will not create a new document if no matching documents are found.
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
