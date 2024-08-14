@@ -265,6 +265,7 @@ db.posts.find({
     }
 })
 ```
+We can't use text or search keyword without creating indexing
 
 ### Greater & Less Than
 
