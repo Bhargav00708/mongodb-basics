@@ -265,8 +265,9 @@ db.posts.find({
     }
 })
 ```
-We can't use text or search keyword without creating indexing
-In mongodb if you want to search text then you have to create index
+1) We can't use text or search keyword without creating indexing
+
+2) In mongodb if you want to search text then you have to create index
 
 ### Greater & Less Than
 
