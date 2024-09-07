@@ -164,7 +164,7 @@ If you pass any value other than `0` or `1`, MongoDB will treat it as a `1` and 
 Now it is generally we should use updateOne and updateMany for better control and clarity
 
 db.posts.update({ title: 'Post Two' },
-{
+$set:{
   title: 'Post Two',
   body: 'New body for post 2',
   date: Date()
